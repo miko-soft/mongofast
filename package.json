@@ -1,0 +1,31 @@
+{
+  "name": "mongofast",
+  "version": "1.0.0",
+  "title": "MongoFast",
+  "description": "Fast way to start with mongodb. Mongoose schema, model and functions ready to manage database, collection and document.",
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "mongoose",
+    "api",
+    "mongo functions",
+    "mongo methods",
+    "database",
+    "collection",
+    "document"
+  ],
+  "author": "Mikosoft",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:miko-soft/mongofast.git"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "mongoose": "^5.10.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
