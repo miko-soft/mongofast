@@ -24,7 +24,12 @@ const main = async () => {
   const collectionName = 'mongo-test';
 
   // compile 'mongo-testMD'
-  await mongofast.compileModel(collectionName); // model compiled with the generic schema
+  const opts = {timestamps: {createdAt: 'created_at',updatedAt: false}};
+  const moSchema = {
+    first_name: { type: String, required: 'Field first_name is required' },
+    age: Number,
+  };
+  await mongofast.compileModel(collectionName, moSchema, opts);
 
   // take a model
   mongofast.useModel(collectionName);
@@ -37,7 +42,7 @@ const main = async () => {
   };
   await mongofast.save(doc)
     .then(docNew => {
-      console.log(`New doc saved to dex8-freepool03/${collectionName} collection:`);
+      console.log(`New doc saved to ${collectionName} collection:`);
       console.log(docNew);
       mongofast.disconnect();
     });
@@ -91,7 +96,7 @@ const moSchema = new Schema({}, opts);
 
 #### async connect(mo_uri) :Promise
 Connects to the mongoDB server via mongo URI. Used database is also defined.
-*mongofast.connect('mongodb+srv://user:pass@cluster0-n4qix.mongodb.net/dex8-dev-pool-free01?retryWrites=true&w=majority')*
+*mongofast.connect('mongodb+srv://user:pass@cluster0-n4qix.mongodb.net/dbname?retryWrites=true&w=majority')*
 
 #### async disconnect() :Promise
 Disconnect from already connected mongoDB server via mongo URI.
