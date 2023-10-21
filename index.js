@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 class Mongofast {
 
   constructor() {
+    this.Schema = mongoose.Schema;
     this.mo_uri;
     this.conn; // NativeConnection
     this.model = null; // currently used model
