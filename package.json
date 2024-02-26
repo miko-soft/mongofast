@@ -1,6 +1,6 @@
 {
   "name": "@mikosoft/mongofast",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "title": "MongoFast",
   "description": "Fast way to start with mongodb. Mongoose schema, model and functions ready to manage database, collection and document.",
   "keywords": [
