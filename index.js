@@ -324,7 +324,7 @@ class Mongofast {
 
 
   /**
-   * Update a doc.
+   * Update multiple documents.
    * @param {Object} moQuery - mongo query
    * @param {Object} docNew - new, updated document
    * @param {Object} updOpts - https://mongoosejs.com/docs/api/model.html#model_Model.findOneAndUpdate

@@ -17,17 +17,19 @@ const Mongofast = require('@mikosoft/mongofast');
 
 const main = async () => {
   // connection
-  const mo_uri = 'mongodb://user:pass@55.185.161.70:27017/dex8-freepool03';
+  const mo_uri = 'mongodb://user:pass@55.185.161.70:27017/db-name';
   const mongofast = new Mongofast();
+  const Schema = mongofast.Schema;
   await mongofast.connect(mo_uri);
 
   const collectionName = 'mongo-test';
 
-  // compile 'mongo-testMD'
-  const opts = {timestamps: {createdAt: 'created_at',updatedAt: false}};
+  // compile 'mongo-testMD' model
+  const opts = {timestamps: {createdAt: 'created_at', updatedAt: false}};
   const moSchema = {
-    first_name: { type: String, required: 'Field first_name is required' },
-    age: Number,
+    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'usersMD' },
+    company: { type: String, required: 'Field "company" is required' },
+    year: Number,
   };
   await mongofast.compileModel(collectionName, moSchema, opts);
 
@@ -36,9 +38,9 @@ const main = async () => {
 
   // create new doc
   const doc = {
-    url: 'http://saved.com',
-    text: 'Lorem ipsum SAVED',
-    depth: 55
+    user_id: '65bcc03db8f6dfe919bcc9d0',
+    company: 'Apple Ltd',
+    depth: 1971
   };
   await mongofast.save(doc)
     .then(docNew => {
@@ -177,6 +179,11 @@ const updOpts = {
 }
 mongofast.editOne({x: 3}, {x: 5, y: 'some thing'}, updOpts)
 ```
+
+#### editMulti(moQuery, docNew, updOpts) :Promise[object]
+Update multiple documents. Mongoose updateMany function is used.
+*mongofast.editMulti({x: {$lt: 5}}, {y: 22})*
+
 
 #### countDocs(moQuery) :Promise[number]
 Count documents according to the given mongo query. Returned value is a number. Mongoose countDocuments function is used.

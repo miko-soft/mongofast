@@ -4,6 +4,7 @@
   "title": "MongoFast",
   "description": "Fast way to start with mongodb. Mongoose schema, model and functions ready to manage database, collection and document.",
   "keywords": [
+    "mongofast",
     "mongo",
     "mongodb",
     "mongoose",
