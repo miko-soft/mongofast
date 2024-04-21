@@ -266,6 +266,17 @@ class Mongofast {
 
 
   /**
+   * List documents with distinct results.
+   * @param {String} field - distinct field
+   * @param {object} conditions
+   * @returns {Promise<Object>}
+   */
+  listDistinct(field, conditions) {
+    return this.model.distinct(field, conditions);
+  }
+
+
+  /**
    * Get a doc.
    * @param {Object} moQuery - mongo query
    * @param {String} sort
