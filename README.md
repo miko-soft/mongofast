@@ -27,7 +27,7 @@ const main = async () => {
   // compile 'mongo-testMD' model
   const opts = {timestamps: {createdAt: 'created_at', updatedAt: false}};
   const moSchema = {
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'usersMD' },
+    user_id: { type: Schema.Types.ObjectId, ref: 'usersMD' },
     company: { type: String, required: 'Field "company" is required' },
     year: Number,
   };
