@@ -24,14 +24,15 @@ class Mongofast {
   async connect(mo_uri) {
     this.mo_uri = mo_uri;
     const opts = {
-      keepAlive: 30000,
+      // keepAlive: true, // KeepAlive is a boolean, not a number in newer versions
       connectTimeoutMS: 5000,
       useUnifiedTopology: true,
-      useFindAndModify: false,
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      autoIndex: true,
-      bufferCommands: true
+      // The following options are no longer supported in Mongoose 7+ and should be removed:
+      // useFindAndModify: false,  // REMOVE
+      // useNewUrlParser: true,     // REMOVE
+      // useCreateIndex: true,      // REMOVE
+      autoIndex: true, // If you want to auto-create indexes, keep this. Otherwise, set it to false.
+      bufferCommands: true, // For handling commands while the driver is not connected. Good practice to keep.
     };
 
     const prom = new Promise((resolve, reject) => {
