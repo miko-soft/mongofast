@@ -58,11 +58,10 @@ class Mongofast {
         console.log(chalk.blue(this.mo_uri, '-connection disconnected'));
       });
 
-      process.on('SIGINT', () => {
-        mongoose.disconnect(() => {
-          console.log(chalk.blue(this.mo_uri, '-disconnected on app termination by SIGINT'));
-          process.exit(0);
-        });
+      process.on('SIGINT', async () => {
+        await mongoose.disconnect();
+        console.log(chalk.blue(this.mo_uri, '-disconnected on app termination by SIGINT'));
+        process.exit(0);
       });
 
     });
